@@ -8,4 +8,9 @@ RSpec.describe Word, type: :model do
     end
     it { should have_db_column(:language).of_type(:string) }
   end
+
+  describe "validation" do
+    it { is_expected.to validate_presence_of(:value) }
+    it { is_expected.to validate_presence_of(:language) }
+  end
 end
