@@ -1,0 +1,23 @@
+name: AI PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  ai_review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Call OpenAI API to review PR
+        run: |
+          curl https://api.openai.com/v1/completions \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
+            -d '{
+              "model": "text-davinci-003",
+              "prompt": "Review this code change: ${{ github.event.pull_request.diff_url }}",
+              "max_tokens": 150
+            }'
