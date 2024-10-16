@@ -1,4 +1,4 @@
-name: PR Review and Confirmation for Ruby on Rails
+name: PR Review and Confirmation for Ruby on Rails.
 
 on:
   pull_request:
