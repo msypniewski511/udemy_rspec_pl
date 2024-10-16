@@ -1,3 +1,10 @@
 Style/StringLiterals:
   EnforcedStyle: double_quotes
-
+AllCops:
+  Exclude:
+    - 'bin/bundle'
+  SuggestExtensions: false
+Style/Documentation:
+  Enabled: false
+Metrics/BlockLength:
+  Max: 30
