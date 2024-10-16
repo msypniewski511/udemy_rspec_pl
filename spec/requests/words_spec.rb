@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Words", type: :request do
-  let(:word) { Word.create!(value: 'cat', language: 'english') }
+  let!(:word) { create(:word) }
   describe "GET /words" do
     it "returns http success" do
       get words_path
