@@ -3,6 +3,7 @@ source "https://rubygems.org"
 ruby "3.2.2"
 
 gem "rails", "~> 7.1.4"
+gem "haml-rails", "~> 2.0"
 gem "sprockets-rails"
 gem "sqlite3", ">= 1.4"
 gem "puma", ">= 5.0"
@@ -23,3 +24,5 @@ group :development do
   gem "web-console"
 end
 
+
+gem "html2haml", "~> 2.3"
