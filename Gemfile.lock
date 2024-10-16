@@ -224,6 +224,8 @@ GEM
       racc (~> 1.5)
       sexp_processor (~> 4.16)
     sexp_processor (4.17.2)
+    shoulda-matchers (6.4.0)
+      activesupport (>= 5.2.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -290,6 +292,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 7.1.4)
   rspec-rails (~> 7.0.0)
+  shoulda-matchers (~> 6.0)
   sprockets-rails
   sqlite3 (>= 1.4)
   stimulus-rails
