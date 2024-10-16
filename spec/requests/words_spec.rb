@@ -9,6 +9,7 @@ RSpec.describe "Words", type: :request do
     end
     it "render index page" do
       expect(response.body).to include(word.value)
+
     end
   end
 end
