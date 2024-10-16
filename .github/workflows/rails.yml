@@ -2,7 +2,7 @@ name: PR Review and Confirmation for Ruby on Rails
 
 on:
   pull_request_target:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened]
 
 jobs:
   lint:
