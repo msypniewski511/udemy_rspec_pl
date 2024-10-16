@@ -17,7 +17,7 @@ jobs:
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
             -d '{
-              "model": "text-davinci-003",
+              "model": "gpt-4o",
               "prompt": "Review this code change: ${{ github.event.pull_request.diff_url }}",
               "max_tokens": 150
             }'
