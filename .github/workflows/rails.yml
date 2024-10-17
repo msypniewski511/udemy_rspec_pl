@@ -4,6 +4,7 @@ on:
   pull_request_target:
     types: [opened, synchronize, reopened]
 
+
 jobs:
   lint:
     name: Lint with RuboCop
