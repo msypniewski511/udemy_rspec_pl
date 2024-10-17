@@ -101,6 +101,10 @@ jobs:
     needs: [lint, test]
 
     steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}  # This checks out the pull request branch
       - name: Approve Pull Request
         if: ${{ success() }}
         uses: hmarr/auto-approve-action@v3
