@@ -3,6 +3,10 @@ name: PR Review and Confirmation for Ruby on Rails
 on:
   pull_request_target:
     types: [opened, synchronize, reopened]
+permissions:
+  contents: read
+  pull-requests: write  # This gives write permissions for commenting, labeling, etc.
+  issues: write  # Needed for commenting on issues or pull requests
 
 jobs:
   lint:
