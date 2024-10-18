@@ -130,7 +130,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: approve
     if: ${{ success() }}
-
     steps:
       - name: Merge Pull Request
         run: gh pr merge --merge --auto ${{ github.event.pull_request.number }}
