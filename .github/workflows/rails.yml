@@ -136,9 +136,3 @@ jobs:
         run: gh pr merge --merge --auto ${{ github.event.pull_request.number }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          uses: peter-evans/enable-pull-request-automerge@v3
-           with:
-             token: ${{ secrets.GITHUB_TOKEN }}
-             pull-request: ${{ github.event.pull_request.number }}
-             merge-method: squash
-
