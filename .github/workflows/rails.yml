@@ -125,7 +125,10 @@ jobs:
     if: ${{ success() }}
 
     steps:
-
+      - name: Checkout PR branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }} # This checks out the pull request branch
       # Step 2: Set GH_TOKEN environment variable using GITHUB_TOKEN
       - name: Set GH_TOKEN environment variable
         run: echo "GH_TOKEN=${{ secrets.PERSONAL_ACCESS_TOKEN }}" >> $GITHUB_ENV
