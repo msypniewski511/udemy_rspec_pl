@@ -125,6 +125,7 @@ jobs:
     if: ${{ success() }}
 
     steps:
+
       # Step 2: Set GH_TOKEN environment variable using GITHUB_TOKEN
       - name: Set GH_TOKEN environment variable
         run: echo "GH_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
@@ -148,3 +149,10 @@ jobs:
   #         github-token: ${{ secrets.GITHUB_TOKEN }}
   #         pull-request-number: ${{ github.event.pull_request.number }}
   #         merge-method: squash
+#       - name: Merge Pull Request
+#         if: ${{ success() }}
+#         uses: peter-evans/enable-pull-request-automerge@v3
+#         with:
+#           github-token: ${{ secrets.GITHUB_TOKEN }}
+#           pull-request-number: ${{ github.event.pull_request.number }}
+#           merge-method: squash
