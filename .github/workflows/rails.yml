@@ -27,11 +27,9 @@ jobs:
           gem install bundler
           bundle add rubocop
           bundle install
-
       - name: Run RuboCop
         run: |
           bundle exec rubocop
-
       - name: Upload RuboCop Results
         if: failure()
         uses: actions/upload-artifact@v3
@@ -59,7 +57,6 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
-
     env:
       # Set Rails environment to test
       RAILS_ENV: test
@@ -81,12 +78,10 @@ jobs:
         run: |
           gem install bundler
           bundle install
-
       - name: Setup Database
         run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
-
       - name: Run Tests with RSpec
         run: |
           bundle exec rspec
@@ -123,8 +118,6 @@ jobs:
           curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
           -d '{"body": "All checks have passed! PR is approved for merge."}' \
           https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments
-
-
   merge:
     name: Merge PR
     runs-on: ubuntu-latest
