@@ -1,3 +1,4 @@
 import './controllers'
-import { application } from './application'
+import { application } from './controllers/application'
 import * as bootstrap from 'bootstrap'
+console.log('hell2')
