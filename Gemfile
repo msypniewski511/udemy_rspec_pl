@@ -33,3 +33,7 @@ group :test do
 end
 
 gem "html2haml", "~> 2.3"
+
+gem "cssbundling-rails", "~> 1.4"
+
+gem "jsbundling-rails", "~> 1.3"
