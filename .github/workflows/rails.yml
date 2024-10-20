@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -81,22 +83,19 @@ jobs:
         run: |
           gem install bundler
           bundle install
-          
+
       - name: Setup Database
         run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
-          
+
       - name: Precompile assets
         run: |
           bundle exec rails assets:precompile
-          
+
       - name: Run Tests with RSpec
         run: |
           bundle exec rspec
-        # Uncomment below if you use Rails test framework instead of RSpec
-        # run: |
-        #   bundle exec rails test
 
       - name: Upload Test Results
         if: failure()
