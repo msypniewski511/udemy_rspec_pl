@@ -79,7 +79,18 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.2 # Use the version of Ruby you are using in your project
-      
+    
+
+      - name: Install Dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Setup Database
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+
       - name: Install dependencies for bun
         run: |
           sudo apt-get update
@@ -92,19 +103,12 @@ jobs:
           curl -fsSL https://bun.sh/install | bash
           echo 'export BUN_INSTALL="$HOME/.bun"' >> $GITHUB_ENV
           echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> $GITHUB_ENV
-
-      - name: Install Dependencies
-        run: |
-          gem install bundler
-          bundle install
-
-      - name: Setup Database
-        run: |
-          bundle exec rails db:create
-          bundle exec rails db:migrate
+          source ~/.bashrc
 
       - name: Precompile assets
         run: |
+          source ~/.bashrc
+          bun --help
           bundle exec rails assets:precompile
 
       - name: Run Tests with RSpec
