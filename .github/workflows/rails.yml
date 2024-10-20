@@ -98,6 +98,7 @@ jobs:
           source /home/runner/.bashrc
           bun --help
           bundle exec rails assets:precompile
+          
 
       - name: Run Tests with RSpec
         run: |
