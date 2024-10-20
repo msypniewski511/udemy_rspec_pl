@@ -232,6 +232,9 @@ GEM
     sexp_processor (4.17.2)
     shoulda-matchers (6.4.0)
       activesupport (>= 5.2.0)
+    simple_form (5.3.1)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -291,6 +294,7 @@ DEPENDENCIES
   rails (~> 7.1.4)
   rspec-rails (~> 7.0.0)
   shoulda-matchers (~> 6.0)
+  simple_form (~> 5.3)
   sprockets-rails
   stimulus-rails
   turbo-rails

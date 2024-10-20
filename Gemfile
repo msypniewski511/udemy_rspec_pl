@@ -33,3 +33,5 @@ group :test do
 end
 
 gem "html2haml", "~> 2.3"
+
+gem "simple_form", "~> 5.3"
