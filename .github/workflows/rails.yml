@@ -111,9 +111,9 @@ jobs:
         with:
           ref: ${{ github.head_ref }} # This checks out the pull request branch
       - name: Print Hello
-        
+
         run: echo "Hello"; git status
-        
+
       - name: Approve Pull Request
         uses: hmarr/auto-approve-action@v3
         with:
@@ -138,13 +138,12 @@ jobs:
           ref: ${{ github.head_ref }} # This checks out the pull request branch
       - name: Check Git status
         run: git status
-        
+
       - id: automerge
         name: automerge
-        uses: "pascalgn/automerge-action@v0.16.4"
+        uses: 'pascalgn/automerge-action@v0.16.4'
         env:
-          GITHUB_TOKEN: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
-
+          GITHUB_TOKEN: '${{ secrets.PERSONAL_ACCESS_TOKEN }}'
 
   # merge:
   #   name: Merge PR
