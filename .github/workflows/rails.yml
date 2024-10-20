@@ -92,22 +92,14 @@ jobs:
           bundle exec rails db:migrate
 
       - name: Install dependencies for bun
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y nodejs npm # If you also need node.js
-          bundle install
-
-      # Install Bun for CSS bundling
-      - name: Install Bun
-        run: |
-          curl -fsSL https://bun.sh/install | bash
-          echo 'export BUN_INSTALL="$HOME/.bun"' >> $GITHUB_ENV
-          echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> $GITHUB_ENV
-          source ~/.bashrc
-
+      - uses: oven-sh/setup-bun@v2
+        run: | 
+          source /home/runner/.bashrc
+          bun --version
+      
       - name: Precompile assets
         run: |
-          source ~/.bashrc
+          source /home/runner/.bashrc
           bun --help
           bundle exec rails assets:precompile
 
