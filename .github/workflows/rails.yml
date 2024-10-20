@@ -93,11 +93,12 @@ jobs:
 
       - name: Install dependencies for bun
       - uses: oven-sh/setup-bun@v2
-      - run: bun install
+        run: | 
+          source /home/runner/.bashrc 
       
       - name: Precompile assets
         run: |
-          source ~/.bashrc
+          source /home/runner/.bashrc
           bun --help
           bundle exec rails assets:precompile
 
