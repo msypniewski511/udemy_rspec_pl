@@ -24,24 +24,12 @@ jobs:
         with:
           ruby-version: 3.2.2
 
-      - name: Install dependencies for bun
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y nodejs npm # If you also need node.js
-          bundle install
-
-      # Install Bun for CSS bundling
-      - name: Install Bun
-        run: |
-          curl -fsSL https://bun.sh/install | bash
-          echo 'export BUN_INSTALL="$HOME/.bun"' >> $GITHUB_ENV
-          echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> $GITHUB_ENV
-
       - name: Install Dependencies
         run: |
           gem install bundler
           bundle add rubocop
           bundle install
+          
       - name: Run RuboCop
         run: |
           bundle exec rubocop
@@ -91,6 +79,19 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.2 # Use the version of Ruby you are using in your project
+      
+      - name: Install dependencies for bun
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nodejs npm # If you also need node.js
+          bundle install
+
+      # Install Bun for CSS bundling
+      - name: Install Bun
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+          echo 'export BUN_INSTALL="$HOME/.bun"' >> $GITHUB_ENV
+          echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> $GITHUB_ENV
 
       - name: Install Dependencies
         run: |
