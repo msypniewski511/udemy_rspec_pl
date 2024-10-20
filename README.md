@@ -25,7 +25,7 @@
   ```
   
   Install dependencies:
-  
+
   ```
   bundle install
   yarn install
