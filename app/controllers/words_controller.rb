@@ -24,7 +24,7 @@ class WordsController < ApplicationController
     if @word.save
       redirect_to(words_path)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
   
