@@ -7,7 +7,6 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
-
 jobs:
   lint:
     name: Lint with RuboCop
@@ -16,6 +15,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -27,6 +28,7 @@ jobs:
           gem install bundler
           bundle add rubocop
           bundle install
+          
       - name: Run RuboCop
         run: |
           bundle exec rubocop
@@ -76,21 +78,31 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.2 # Use the version of Ruby you are using in your project
+    
 
       - name: Install Dependencies
         run: |
           gem install bundler
           bundle install
+
       - name: Setup Database
         run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
+
+      - name: Install dependencies for bun
+        uses: oven-sh/setup-bun@v2
+      
+      - name: Precompile assets
+        run: |
+          source /home/runner/.bashrc
+          bun --help
+          bundle exec rails assets:precompile
+          
+
       - name: Run Tests with RSpec
         run: |
           bundle exec rspec
-        # Uncomment below if you use Rails test framework instead of RSpec
-        # run: |
-        #   bundle exec rails test
 
       - name: Upload Test Results
         if: failure()
@@ -144,24 +156,3 @@ jobs:
         uses: 'pascalgn/automerge-action@v0.16.4'
         env:
           GITHUB_TOKEN: '${{ secrets.PERSONAL_ACCESS_TOKEN }}'
-
-  # merge:
-  #   name: Merge PR
-  #   runs-on: ubuntu-latest
-  #   needs: approve
-
-  #   steps:
-  #     - name: Merge Pull Request
-  #       if: ${{ success() }}
-  #       uses: peter-evans/enable-pull-request-automerge@v3
-  #       with:
-  #         github-token: ${{ secrets.GITHUB_TOKEN }}
-  #         pull-request-number: ${{ github.event.pull_request.number }}
-  #         merge-method: squash
-#       - name: Merge Pull Request
-#         if: ${{ success() }}
-#         uses: peter-evans/enable-pull-request-automerge@v3
-#         with:
-#           github-token: ${{ secrets.GITHUB_TOKEN }}
-#           pull-request-number: ${{ github.event.pull_request.number }}
-#           merge-method: squash

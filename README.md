@@ -2,6 +2,7 @@
 
  * **Features**
   - List the key features of the application here. For example:
+  - 
 
 
 * **Requirements**
@@ -10,7 +11,6 @@
   - Database: PostgreSQL (or any other DB)
   - Node.js: 20.17.0 and Yarn for managing frontend assets
   - Bundler for managing dependencies
-
 
 * **System dependencies:**
   - Database: PostgreSQL (or any other DB)
@@ -26,7 +26,7 @@
   ```
   
   Install dependencies:
-  
+
   ```
   bundle install
   yarn install
