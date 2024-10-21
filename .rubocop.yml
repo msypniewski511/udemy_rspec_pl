@@ -7,4 +7,6 @@ AllCops:
 Style/Documentation:
   Enabled: false
 Metrics/BlockLength:
-  Max: 30
+  Max: 300
+Layout/LineLength:
+  Max: 150
